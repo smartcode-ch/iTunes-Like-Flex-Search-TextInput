@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    ADOBE SYSTEMS INCORPORATED
+    Copyright 2008 Adobe Systems Incorporated
+    All Rights Reserved.
+
+    NOTICE: Adobe permits you to use, modify, and distribute this file
+    in accordance with the terms of the license agreement accompanying it.
+
+-->
+<!--- The default skin class for Spark TextInput component.  
+
+     @see spark.components.TextInput
+        
+      @langversion 3.0
+      @playerversion Flash 10
+      @playerversion AIR 1.5
+      @productversion Flex 4
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			 xmlns:s="library://ns.adobe.com/flex/spark"
+			 xmlns:mx="library://ns.adobe.com/flex/mx"
+			 xmlns:fb="http://ns.adobe.com/flashbuilder/2009" 
+			 alpha.disabled="0.5" blendMode="normal" 
+			 xmlns:inputs="ch.smartcode.iTunesLikeSearchTextInput.inputs.*" 
+			 xmlns:lists="ch.smartcode.iTunesLikeSearchTextInput.lists.*">
+	
+    <fx:Metadata>
+		[HostComponent("ch.smartcode.iTunesLikeSearchTextInput.inputs.SearchTextInput")]
+	</fx:Metadata>
+    
+    <s:states>
+        <s:State name="normal"/>
+		<s:State name="normalWithPrompt"/>
+        <s:State name="disabled"/>
+		<s:State name="disabledWithPrompt"/>
+    </s:states>
+	
+	<s:Rect left="1.5" right="1.5" top="1.5" bottom="1.5" id="fill" radiusX="12">
+		<s:fill>
+			<s:SolidColor id="bgFill" color="0xFFFFFF" />
+		</s:fill>
+	</s:Rect>
+	
+	<lists:SearchTextInputDropDownList id="searchOptions"
+									   left="3"
+									   requireSelection="true"
+									   dataProvider="{hostComponent.searchOptionsData}" />
+	
+    <!-- text -->
+    <!--- @copy spark.components.supportClasses.SkinnableTextBase#textDisplay -->
+    <s:RichEditableText id="textDisplay"
+              verticalAlign="middle"
+              widthInChars="10"
+              left="28" right="10" top="1" bottom="1" />
+	
+	<s:Button id="clearButton"
+			  verticalCenter="0"
+			  right="5"
+			  skinClass="ch.smartcode.iTunesLikeSearchTextInput.buttons.skins.SearchTextInputClearButtonSkin"/>
+	
+	<s:Rect left=".5" right=".5" top=".5" bottom=".5" id="borderInner" radiusX="12">
+		<s:stroke>
+			<!--- @private -->
+			<s:SolidColorStroke id="borderStrokeInner" color="#333333" weight="1" />
+		</s:stroke>
+	</s:Rect>
+
+</s:SparkSkin>

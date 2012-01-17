@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="false"
+				left="0" right="0"
+				width="100%">
+	
+	<fx:Script>
+		<![CDATA[
+			
+ 			private var _highlight:Boolean;
+			
+			override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+			{
+				icon.visible = selected && !highlight;
+				icon.includeInLayout = !highlight;
+				
+ 				iconHighlight.visible = highlight;
+				iconHighlight.includeInLayout = highlight;
+				
+				super.updateDisplayList( unscaledWidth, unscaledHeight );
+			}
+			
+			override public function set selected(value:Boolean):void
+			{
+				super.selected = value;
+				invalidateDisplayList();
+			}
+
+			[Bindable]
+			public function get highlight():Boolean
+			{
+				return _highlight;
+			}
+
+			public function set highlight(value:Boolean):void
+			{
+				if( value != _highlight ) {
+					_highlight = value;
+					
+					if( _highlight ) {
+						invalidateDisplayList();
+					} else {
+					
+					}
+				}
+				
+			}
+
+		]]>
+	</fx:Script>
+	
+	<s:Rect left="0" right="0" top="0" bottom="0"
+			visible="{highlight}"
+			width="100%">
+		<s:fill>
+			<s:SolidColor color="#0167FF" />
+		</s:fill>
+	</s:Rect>
+	
+	<s:HGroup id="group" 
+			  left="0" right="0"
+			  width="100%"
+			  verticalAlign="middle"
+			  gap="5"
+			  paddingTop="3"
+			  paddingBottom="3"
+			  paddingRight="3"
+			  paddingLeft="3"
+			  variableColumnWidth="true">
+		
+		<s:Image id="icon"
+				 source="@Embed(source='/ch/smartcode/iTunesLikeSearchTextInput/assets/img/checkmark-icon.png')"/>
+		
+		<s:Image id="iconHighlight"
+				 source="@Embed(source='/ch/smartcode/iTunesLikeSearchTextInput/assets/img/checkmark-icon-white.png')"/>
+		
+		<s:Label id="labelDisplay"
+				 width="100%"
+				 color="{highlight ? 0xFFFFFF : 0x000000}"
+				 text="{data.label}" 
+				 fontFamily="Arial"
+				 fontWeight="normal" 
+				 fontSize="11"
+				 useHandCursor="true" 
+				 buttonMode="true"/>
+	</s:HGroup>	
+	
+	
+	
+</s:ItemRenderer>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+ADOBE SYSTEMS INCORPORATED
+Copyright 2008 Adobe Systems Incorporated
+All Rights Reserved.
+
+NOTICE: Adobe permits you to use, modify, and distribute this file
+in accordance with the terms of the license agreement accompanying it.
+
+-->
+
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			 xmlns:s="library://ns.adobe.com/flex/spark" 
+			 xmlns:fb="http://ns.adobe.com/flashbuilder/2009" 
+			 alpha.disabled="0.5">
+	
+	<!-- host component -->
+	<fx:Metadata>
+		<![CDATA[ 
+		/** 
+		* @copy spark.skins.spark.ApplicationSkin#hostComponent
+		*/
+		[HostComponent("spark.components.Button")]
+		]]>
+	</fx:Metadata>
+	
+	<!-- states -->
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" />
+		<s:State name="down" />
+		<s:State name="disabled" />
+	</s:states>
+	
+	<!-- transitions -->
+	<s:transitions>
+		<s:Transition fromState="up" toState="over">
+			<s:Parallel duration="250">
+				<s:AnimateColor target="{circleFill}" />
+				<s:Animate target="{xFill}">
+					<s:SimpleMotionPath property="alpha" />
+				</s:Animate>
+			</s:Parallel>
+		</s:Transition>
+		<s:Transition fromState="over" toState="up">
+			<s:Parallel duration="250">
+				<s:AnimateColor target="{circleFill}" />
+				<s:Animate target="{xFill}">
+					<s:SimpleMotionPath property="alpha" />
+				</s:Animate>
+			</s:Parallel>
+		</s:Transition>
+	</s:transitions>
+	
+	<!-- circle -->
+	<s:Ellipse width="12" height="12">
+		<s:fill>
+			<s:SolidColor id="circleFill" color="#333333" alpha="0" alpha.down="1" alpha.over="1" />
+		</s:fill>
+	</s:Ellipse>
+	
+	<!-- x -->
+	<s:Group x="6" y="6">
+		<s:Path rotation="45">
+			<s:data>M -1,-4 L 1,-4 1,-1 4,-1 4,1 1,1 1,4 -1,4 -1,1 -4,1 -4,-1 -1,-1, Z</s:data>
+			<s:fill>
+				<s:SolidColor id="xFill" color="0x666666" color.over="#ffffff" />
+			</s:fill>
+		</s:Path>
+	</s:Group>
+</s:SparkSkin>

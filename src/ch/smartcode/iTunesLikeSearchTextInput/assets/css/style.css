@@ -1,0 +1,53 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace button "ch.smartcode.micemeta.views.buttons.*";
+@namespace input "ch.smartcode.micemeta.views.inputs.*";
+@namespace components "ch.smartcode.micemeta.views.components.*";
+@namespace nestcheck "ch.smartcode.micemeta.views.components.nestcheck.*";
+@namespace buttons "ch.smartcode.micemeta.views.components.buttons.*";
+@namespace inputs "ch.smartcode.micemeta.views.components.inputs.*";
+@namespace text "ch.smartcode.micemeta.views.components.text.*";
+@namespace content "ch.smartcode.micemeta.views.content.*";
+
+@font-face { 
+	src: url("../fonts/MyriadWebPro.ttf"); 
+	fontFamily: Myriad; 
+	fontWeight: normal; 
+	embedAsCFF: true;
+	advancedAntiAliasing: true; 
+}
+
+@font-face { 
+	src: url("../fonts/GeorgiaItalic.ttf"); 
+	fontFamily: Georgia; 
+	fontWeight: normal; 
+	fontStyle: italic;
+	embedAsCFF: true;
+	advancedAntiAliasing: true; 
+}
+
+@font-face { 
+	src: url("../fonts/MyriadWebProBold.ttf"); 
+	fontFamily: Myriad; 
+	fontWeight: bold; 
+	embedAsCFF: true; 
+	advancedAntiAliasing: true; 
+}
+
+@font-face { 
+	src: url("../fonts/MyriadWebPro.ttf"); 
+	fontFamily: MyriadMX; 
+	fontWeight: normal; 
+	embedAsCFF: false; 
+}
+
+s|global {
+	font-family: Myriad;
+	font-size: 13px;
+	font-grid-fit-type: pixel;
+	font-weight: normal;
+	font-anti-alias-type: advanced;
+	color: #000000;
+}
+

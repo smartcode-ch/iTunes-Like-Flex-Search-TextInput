@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:inputs="ch.smartcode.iTunesLikeSearchTextInput.inputs.*"
+			   xmlns:components="ch.smartcode.iTunesLikeSearchTextInput.components.*"
+			   initialize="init(event)" viewSourceURL="srcview/index.html">
+	
+	<fx:Style source="assets/css/style.css"/>
+	
+	<fx:Declarations>
+		<!-- XML data source -->
+		<fx:XML id="xmlSourceFile" source="/ch/smartcode/iTunesLikeSearchTextInput/assets/data/sample-data.xml" />
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import ch.smartcode.iTunesLikeSearchTextInput.vo.SearchOptionVO;
+			
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			import mx.rpc.xml.SimpleXMLDecoder;
+			import mx.utils.ArrayUtil;
+			
+			[Bindable]
+			private var _data:ArrayCollection;
+			
+			[Bindable]
+			private var _searchOptions:ArrayCollection;
+			
+			
+			protected function init( event:FlexEvent ):void
+			{
+				
+				// getting the sample data and convert it to an ArrayCollection
+				var xml:XMLDocument = new XMLDocument( xmlSourceFile );				
+				var data:Object = new SimpleXMLDecoder().decodeXML( xml );
+				
+				_data = new ArrayCollection( ArrayUtil.toArray( data.records.record ) );
+				
+				// Create the search options ArrayCollection
+				_searchOptions = new ArrayCollection([
+						new SearchOptionVO(null,'all'), // specify a null value for the field name if you like to filter all columns
+						new SearchOptionVO('name'),
+						new SearchOptionVO('mail'),
+						new SearchOptionVO('city'),
+						new SearchOptionVO('zip'),
+						new SearchOptionVO('country')
+				]);
+					
+				main.searchInput.searchOptionsData = _searchOptions;
+				main.searchInput.dataProvider = _data;
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	
+	
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle" />
+	</s:layout>
+	
+	<components:CustomTitleWindow id="main"
+								  title="iTunes like Flex Search Text Input"
+								  width="800"
+								  height="600">
+		
+		<s:VGroup left="0" right="0"
+				  height="100%"
+				  paddingTop="10"
+				  paddingRight="8"
+				  paddingBottom="8"
+				  paddingLeft="10"
+				  gap="10">
+			
+			
+			<!-- <s:HGroup width="100%">
+				
+				<s:Spacer width="100%" />
+				<inputs:iTunesLikeSearchTextInput id="searchInput"
+											  searchOptionsData="{_searchOptions}"
+											  dataProvider="{_data}"/>
+			</s:HGroup> -->
+			<s:DataGrid id="grid" 
+						skinClass="ch.smartcode.iTunesLikeSearchTextInput.grids.skins.EntityGridSkin"
+						dataProvider="{_data}" 
+						width="100%"
+						height="100%">
+				<s:columns>
+					<s:ArrayList>
+						<s:GridColumn dataField="name" />
+						<s:GridColumn dataField="mail" />
+						<s:GridColumn dataField="city" />
+						<s:GridColumn dataField="zip" />
+						<s:GridColumn dataField="country" />
+					</s:ArrayList>
+				</s:columns>
+			</s:DataGrid>
+			
+			
+		</s:VGroup>
+		
+	</components:CustomTitleWindow>
+	
+</s:Application>
