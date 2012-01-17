@@ -31,7 +31,6 @@ package ch.smartcode.iTunesLikeSearchTextInput.inputs
 		public function SearchTextInput()
 		{
 			super();
-			//setStyle( "focusAlpha", null );
 			setStyle( "skinClass", SearchTextInputSkin );
 			
 			//watch for programmatic changes to text property
