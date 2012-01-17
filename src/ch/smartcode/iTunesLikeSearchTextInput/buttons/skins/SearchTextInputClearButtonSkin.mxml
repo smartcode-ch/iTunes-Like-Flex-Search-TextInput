@@ -55,18 +55,18 @@ in accordance with the terms of the license agreement accompanying it.
 	</s:transitions>
 	
 	<!-- circle -->
-	<s:Ellipse width="12" height="12">
+	<s:Ellipse width="14" height="14">
 		<s:fill>
-			<s:SolidColor id="circleFill" color="#333333" alpha="0" alpha.down="1" alpha.over="1" />
+			<s:SolidColor id="circleFill" color="#bababa" alpha="1" />
 		</s:fill>
 	</s:Ellipse>
 	
 	<!-- x -->
-	<s:Group x="6" y="6">
+	<s:Group x="7" y="7">
 		<s:Path rotation="45">
 			<s:data>M -1,-4 L 1,-4 1,-1 4,-1 4,1 1,1 1,4 -1,4 -1,1 -4,1 -4,-1 -1,-1, Z</s:data>
 			<s:fill>
-				<s:SolidColor id="xFill" color="0x666666" color.over="#ffffff" />
+				<s:SolidColor id="xFill" color="0xffffff" />
 			</s:fill>
 		</s:Path>
 	</s:Group>
