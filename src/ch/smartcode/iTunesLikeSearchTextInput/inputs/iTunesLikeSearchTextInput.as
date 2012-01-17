@@ -7,6 +7,7 @@ package ch.smartcode.iTunesLikeSearchTextInput.inputs
 	
 	import mx.collections.ArrayCollection;
 	import mx.events.FlexEvent;
+	import mx.events.ItemClickEvent;
 
 	public class iTunesLikeSearchTextInput extends SearchTextInput
 	{
@@ -20,6 +21,7 @@ package ch.smartcode.iTunesLikeSearchTextInput.inputs
 			super();
 			
 			addEventListener( FlexEvent.CREATION_COMPLETE, onCreationCompleteHandler );
+			addEventListener( ItemClickEvent.ITEM_CLICK, textChangedHandler );
 		}
 
 		private function onCreationCompleteHandler(e:FlexEvent):void

@@ -8,14 +8,16 @@ package ch.smartcode.iTunesLikeSearchTextInput.inputs
 	
 	import mx.collections.ArrayCollection;
 	import mx.events.FlexEvent;
+	import mx.events.IndexChangedEvent;
 	import mx.events.ItemClickEvent;
 	
 	import spark.components.Button;
 	import spark.components.TextInput;
+	import spark.events.IndexChangeEvent;
 	import spark.events.TextOperationEvent;
 	
 	[Event(name="itemClick", type="mx.events.ItemClickEvent")]
-	[Event(name="change", type="spark.events.TextOperationEvent")]
+	[Event(name="change", type="spark.events.IndexChangeEvent")]
 	public class SearchTextInput extends TextInput
 	{
 		[SkinPart(required="true")]
@@ -31,6 +33,7 @@ package ch.smartcode.iTunesLikeSearchTextInput.inputs
 		public function SearchTextInput()
 		{
 			super();
+			//setStyle( "focusAlpha", null );
 			setStyle( "skinClass", SearchTextInputSkin );
 			
 			//watch for programmatic changes to text property
@@ -38,6 +41,7 @@ package ch.smartcode.iTunesLikeSearchTextInput.inputs
 			
 			//watch for user changes (aka typing) to text property
 			this.addEventListener(TextOperationEvent.CHANGE, textChangedHandler, false, 0, true);
+			
 		}
 		
 		protected function textChangedHandler(e:Event):void {
@@ -66,13 +70,14 @@ package ch.smartcode.iTunesLikeSearchTextInput.inputs
 			}
 			
 			if( instance == searchOptions ) {
-				searchOptions.addEventListener( ItemClickEvent.ITEM_CLICK, optionChangeHandler,false,0,true);
+				//searchOptions.addEventListener( ItemClickEvent.ITEM_CLICK, optionChangeHandler,false,0,true);
+				searchOptions.addEventListener( IndexChangeEvent.CHANGE, optionChangeHandler,false,0,true );
 				searchOptions.dataProvider = searchOptionsData;
 			}
 		}
 		
 		
-		protected function optionChangeHandler(e:ItemClickEvent):void
+		protected function optionChangeHandler(e:IndexChangeEvent):void
 		{
 			dispatchEvent( e );
 		}
@@ -85,7 +90,7 @@ package ch.smartcode.iTunesLikeSearchTextInput.inputs
 			}
 			
 			if( instance == searchOptions ) {
-				searchOptions.removeEventListener( ItemClickEvent.ITEM_CLICK, optionChangeHandler );
+				searchOptions.removeEventListener( IndexChangeEvent.CHANGE, optionChangeHandler );
 			}
 		}
 		
