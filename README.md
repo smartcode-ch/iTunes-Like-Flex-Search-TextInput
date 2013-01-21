@@ -22,5 +22,5 @@ The `searchOptionsData` property takes an `mx.collections.ArrayCollection` of `c
 
 ## More
 
-- [Visit the blog post](http://www.smartcode.ch/blog/flex/itunes-like-flex-search-text-input/).
+- [Visit the blog post](http://www.smartcode.ch/blog/itunes-like-flex-search-text-input/).
 - Check out the [demo](http://showcase.smartcode.ch/itunes-like-flex-search-text-input/).
